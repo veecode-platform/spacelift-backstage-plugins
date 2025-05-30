@@ -1,0 +1,15 @@
+{
+  "name": "@spacelift/backstage-plugins",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "graphql": "^16.8.1",
+    "typescript": "~5.4.5",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "eslint": "^8.0.0",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0"
+  }
+}
