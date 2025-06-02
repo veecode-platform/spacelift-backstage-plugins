@@ -11,7 +11,7 @@ function handleError(res: express.Response, logger: LoggerService, error: any, c
   if (error instanceof ClientError) {
     const gqlError = error.response.errors?.[0];
     const message = gqlError?.message || 'GraphQL request failed';
-    const statusCode = error.response.status || 500;
+    const statusCode = error.response.status ?? 500;
 
     res.status(statusCode).json({ error: message, details: gqlError?.extensions });
     return;
@@ -52,10 +52,6 @@ export async function createRouter({
 
   router.post('/stacks/:stackId/trigger', async (req, res) => {
     const { stackId } = req.params;
-    if (!stackId) {
-      res.status(400).json({ error: 'Missing stackId path parameter' });
-      return;
-    }
     try {
       const runTrigger = await spaceliftService.triggerRun(stackId);
       res.json(runTrigger);

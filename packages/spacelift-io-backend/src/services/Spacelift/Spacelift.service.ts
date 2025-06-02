@@ -1,10 +1,6 @@
 import { gql, request } from 'graphql-request';
-import {
-  RunTriggerResultSchema,
-  SpaceliftService,
-  SpaceliftServiceCtx,
-  StacksSchema,
-} from './types';
+import { validateStacks, validateTriggerRunResult } from '../../helpers/validations';
+import { SpaceliftService, SpaceliftServiceCtx } from './types';
 
 export async function createSpaceliftService({
   api,
@@ -92,14 +88,10 @@ export async function createSpaceliftService({
         { Authorization: `Bearer ${currentToken}` }
       );
 
-      const validationResult = StacksSchema.safeParse(rawResponse.stacks);
-      if (!validationResult.success) {
-        logger.error('Invalid stacks data received from API:', validationResult.error);
-        throw new Error(`Invalid stacks data received from API: ${validationResult.error.message}`);
-      }
+      const validationResult = validateStacks(rawResponse.stacks);
 
       logger.info('Stacks fetched and validated successfully 🎉');
-      return validationResult.data;
+      return validationResult;
     },
     triggerRun: async (stackId: string) => {
       const currentToken = await getToken();
@@ -121,16 +113,10 @@ export async function createSpaceliftService({
         { Authorization: `Bearer ${currentToken}` }
       );
 
-      const validationResult = RunTriggerResultSchema.safeParse(rawResponse.runTrigger);
-      if (!validationResult.success) {
-        logger.error('Invalid run trigger result data received from API:', validationResult.error);
-        throw new Error(
-          `Invalid run trigger result data received from API: ${validationResult.error.message}`
-        );
-      }
+      const validationResult = validateTriggerRunResult(rawResponse.runTrigger);
 
       logger.info(`Run triggered and validated successfully for stack ${stackId} 🎉`);
-      return validationResult.data;
+      return validationResult;
     },
   };
 }
