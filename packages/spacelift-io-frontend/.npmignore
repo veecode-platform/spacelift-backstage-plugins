@@ -1,0 +1,20 @@
+# Common things to ignore
+node_modules
+*.log
+*.tgz
+coverage
+dev/
+src/
+
+# Backstage specific
+app-config.yaml
+
+# Test files
+*.test.*
+*.spec.*
+__mocks__
+__fixtures__
+
+# Typescript specific
+*.tsbuildinfo
+tsconfig.json

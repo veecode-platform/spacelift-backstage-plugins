@@ -16,7 +16,8 @@
   "include": [],
   "references": [
     // References to sub-projects
-    { "path": "packages/spacelift-io-backend" }
+    { "path": "packages/spacelift-io-backend" },
+    { "path": "packages/spacelift-io-frontend" }
   ],
   "exclude": ["node_modules", "dist-types"]
 }

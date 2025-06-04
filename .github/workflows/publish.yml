@@ -16,11 +16,20 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Compile TypeScript
-        run: yarn workspace @spacelift/plugin-spacelift-io-backend tsc
-      - name: Build package
-        run: yarn workspace @spacelift/plugin-spacelift-io-backend build
-      - name: Publish package
-        run: yarn workspace @spacelift/plugin-spacelift-io-backend npm publish --access public
+      - name: Compile TypeScript Backend
+        run: yarn workspace @spacelift/backstage-integration-backend tsc
+      - name: Build Backend package
+        run: yarn workspace @spacelift/backstage-integration-backend build
+      - name: Publish Backend package
+        run: yarn workspace @spacelift/backstage-integration-backend npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Compile TypeScript Frontend
+        run: yarn workspace @spacelift/backstage-integration-frontend tsc
+      - name: Build Frontend package
+        run: yarn workspace @spacelift/backstage-integration-frontend build
+      - name: Publish Frontend package
+        run: yarn workspace @spacelift/backstage-integration-frontend npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,83 @@
+{
+  "name": "@spacelift/backstage-integration-frontend",
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.esm.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "frontend-plugin",
+    "pluginId": "spacelift-io-frontend",
+    "pluginPackages": [
+      "@spacelift/backstage-integration-frontend"
+    ]
+  },
+  "configSchema": "config.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build:types": "tsc -b",
+    "build": "yarn build:types && backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test --coverage --coverageReporters='json-summary' --coverageReporters='text' --coverageReporters='lcov'",
+    "test:watch": "backstage-cli package test --watch",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}",
+      "!src/index.ts",
+      "!src/routes.ts",
+      "!src/types.ts",
+      "!src/plugin.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 90,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    }
+  },
+  "dependencies": {
+    "@backstage/core-components": "^0.17.1",
+    "@backstage/core-plugin-api": "^1.10.6",
+    "@backstage/plugin-catalog-react": "^1.17.0",
+    "@backstage/theme": "^0.6.5",
+    "@material-ui/core": "^4.9.13",
+    "@material-ui/icons": "^4.9.1",
+    "@material-ui/lab": "^4.0.0-alpha.61",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "luxon": "^3.6.1",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-use": "^17.2.4"
+  },
+  "peerDependencies": {
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0"
+  },
+  "devDependencies": {
+    "@backstage/cli": "^0.32.0",
+    "@backstage/core-app-api": "^1.16.1",
+    "@backstage/dev-utils": "^1.1.9",
+    "@backstage/test-utils": "^1.7.7",
+    "@testing-library/jest-dom": "^6.0.0",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.0.0",
+    "@types/luxon": "^3",
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "msw": "^1.0.0"
+  },
+  "files": [
+    "config.d.ts",
+    "dist"
+  ]
+}
