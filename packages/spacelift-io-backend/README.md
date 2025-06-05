@@ -1,28 +1,47 @@
-# spacelift-io
+# Spacelift Backend Plugin
 
-This plugin backend was templated using the Backstage CLI. You should replace this text with a description of your plugin backend.
+This backend plugin for Backstage integrates with Spacelift to provide information about your Spacelift stacks and runs.
 
 ## Installation
 
-This plugin is installed via the `@internal/plugin-spacelift-io-backend` package. To install it to your backend package, run the following command:
+1. Install the plugin package in your Backstage backend:
 
-```bash
-# From your root directory
-yarn --cwd packages/backend add @internal/plugin-spacelift-io-backend
+   ```bash
+   # From your Backstage root directory
+   yarn --cwd packages/backend add @spacelift/backstage-integration-backend
+   ```
+
+2. Add the plugin to your backend in `packages/backend/src/index.ts`:
+
+   ```ts
+   // packages/backend/src/index.ts
+   import { createBackend } from '@backstage/backend-defaults';
+
+   const backend = createBackend();
+   // ...
+   backend.add(import('@spacelift/backstage-integration-backend'));
+   // ...
+   await backend.start();
+   ```
+
+## Configuration
+
+To use this plugin, you need to configure it in your `app-config.yaml`. Add the following section:
+
+```yaml
+spacelift:
+  hostUrl: 'https://<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL
+  apiKey: ${SPACELIFT_API_KEY} # Your Spacelift API Key ID
+  apiSecret: ${SPACELIFT_API_SECRET} # Your Spacelift API Key Secret
 ```
 
-Then add the plugin to your backend in `packages/backend/src/index.ts`:
+Make sure to replace `<your-subdomain>` with your actual Spacelift subdomain.
+The `apiKey` and `apiSecret` should be stored securely, for example, as environment variables.
 
-```ts
-const backend = createBackend();
-// ...
-backend.add(import('@internal/plugin-spacelift-io-backend'));
-```
+## Frontend Plugin
 
-## Development
+This backend plugin is intended to be used with the [Spacelift Frontend Plugin](../spacelift-io-frontend/README.md).
 
-This plugin backend can be started in a standalone mode from directly in this
-package with `yarn start`. It is a limited setup that is most convenient when
-developing the plugin backend itself.
+## Spacelift Documentation
 
-If you want to run the entire project, including the frontend, run `yarn start` from the root directory.
+For more information about Spacelift and its API, please refer to the [official Spacelift documentation](https://docs.spacelift.io/).

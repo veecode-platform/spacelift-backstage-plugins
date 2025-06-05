@@ -1,13 +1,72 @@
-# spacelift-io-frontend
+# Spacelift Frontend Plugin
 
-Welcome to the spacelift-io-frontend plugin!
+This frontend plugin for Backstage provides a user interface to view and interact with your Spacelift stacks and runs.
 
-_This plugin was created through the Backstage CLI_
+## Installation
 
-## Getting started
+1. Install the plugin package in your Backstage frontend app:
 
-Your plugin has been added to the example app in this repository, meaning you'll be able to access it by running `yarn start` in the root directory, and then navigating to [/spacelift-io-frontend](http://localhost:3000/spacelift-io-frontend).
+   ```bash
+   # From your Backstage root directory
+   yarn --cwd packages/app add @spacelift/backstage-integration-frontend
+   ```
 
-You can also serve the plugin in isolation by running `yarn start` in the plugin directory.
-This method of serving the plugin provides quicker iteration speed and a faster startup and hot reloads.
-It is only meant for local development, and the setup for it can be found inside the [/dev](./dev) directory.
+2. Add the plugin to your `packages/app/src/App.tsx`:
+
+   ```tsx
+   // packages/app/src/App.tsx
+   import { SpaceliftIoPage } from '@spacelift/backstage-integration-frontend';
+
+   // ...
+
+   const routes = (
+     <FlatRoutes>
+       {/* ...other routes */}
+       <Route path="/spacelift" element={<SpaceliftIoPage />} />
+     </FlatRoutes>
+   );
+   ```
+
+3. Add the plugin to the sidebar in `packages/app/src/components/Root/Root.tsx`:
+
+   ```tsx
+   // packages/app/src/components/Root/Root.tsx
+   import SpaceliftIcon from '@material-ui/icons/CloudQueue'; // Example icon, choose an appropriate one
+
+   // ...
+
+   export const Root = ({ children }: PropsWithChildren<{}>) => (
+     <SidebarPage>
+       <Sidebar>
+         {/* ...other sidebar items */}
+         <SidebarItem icon={SpaceliftIcon} to="spacelift" text="Spacelift" />
+       </Sidebar>
+       {/* ... */}
+     </SidebarPage>
+   );
+   ```
+
+## Configuration
+
+This plugin requires the `spacelift.hostUrl` to be configured in your `app-config.yaml` to allow the frontend to make requests to the Spacelift API via the backend plugin.
+
+```yaml
+spacelift:
+  hostUrl: 'https://<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL
+```
+
+Make sure to replace `<your-subdomain>` with your actual Spacelift subdomain.
+
+### Important Note on Permissions
+
+This frontend plugin relies on the permissions configured for the Spacelift API Key in the backend plugin. It does not implement separate user-level permission checks within the frontend components.
+
+Ensure that your Backstage instance has appropriate general permissions set up to control access to this plugin's pages and functionalities. This is crucial to prevent users from performing actions in Spacelift for which they are not authorized via the configured API key.
+
+## Backend Plugin
+
+This frontend plugin requires the [Spacelift Backend Plugin](../spacelift-io-backend/README.md) to be installed and configured.
+
+## Spacelift Documentation
+
+For more information about Spacelift, please refer to the [official Spacelift documentation](https://docs.spacelift.io/).
