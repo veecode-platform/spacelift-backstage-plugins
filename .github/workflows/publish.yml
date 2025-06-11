@@ -4,30 +4,39 @@ on:
   release:
     types: [published]
 
+env:
+  VERSION: ${{ github.event.release.tag_name }}
+
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 24.x
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Compile TypeScript Backend
-        run: yarn workspace @spacelift/backstage-integration-backend tsc
-      - name: Build Backend package
-        run: yarn workspace @spacelift/backstage-integration-backend build
-      - name: Publish Backend package
-        run: yarn workspace @spacelift/backstage-integration-backend npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Compile TypeScript Frontend
-        run: yarn workspace @spacelift/backstage-integration-frontend tsc
-      - name: Build Frontend package
-        run: yarn workspace @spacelift/backstage-integration-frontend build
-      - name: Publish Frontend package
-        run: yarn workspace @spacelift/backstage-integration-frontend npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Check Yarn version
+        run: yarn --version
+
+      - name: Set version in all package.json files
+        run: |
+          find . -name package.json -exec sed -i.bak "s/<VERSION>/${VERSION#v}/g" {} +
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build packages
+        run: yarn run build
+
+      - name: Set NPM auth token
+        run: npm config set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_PULUMI_PUBLISHER }}
+
+      - name: Publish backend plugin
+        run: yarn workspaces foreach -A --exclude @spacelift-io/backstage-plugins exec npm publish --access public

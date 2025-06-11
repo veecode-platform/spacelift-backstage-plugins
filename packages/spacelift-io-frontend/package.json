@@ -1,7 +1,21 @@
 {
-  "name": "@spacelift/backstage-integration-frontend",
-  "version": "0.1.0",
-  "license": "Apache-2.0",
+  "name": "@spacelift-io/backstage-integration-frontend",
+  "version": "<VERSION>",
+  "description": "Backstage plugin for integrating Spacelift.io with Backstage",
+  "keywords": [
+    "backstage-plugin",
+    "backstage",
+    "spacelift",
+    "infrastructure-as-code",
+    "IaC",
+    "devops",
+    "cloud",
+    "category/cloud",
+    "category/infrastructure"
+  ],
+  "homepage": "https://spacelift.io",
+  "repository": "https://github.com/spacelift-io/backstage-plugins.git",
+  "license": "MIT",
   "main": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "publishConfig": {
@@ -13,7 +27,7 @@
     "role": "frontend-plugin",
     "pluginId": "spacelift-io-frontend",
     "pluginPackages": [
-      "@spacelift/backstage-integration-frontend"
+      "@spacelift-io/backstage-integration-frontend"
     ]
   },
   "configSchema": "config.d.ts",
@@ -80,5 +94,13 @@
   "files": [
     "config.d.ts",
     "dist"
-  ]
+  ],
+  "typesVersions": {
+    "*": {
+      "package.json": [
+        "package.json"
+      ]
+    }
+  },
+  "module": "./dist/index.esm.js"
 }

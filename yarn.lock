@@ -6571,9 +6571,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@spacelift/backstage-integration-backend@workspace:packages/spacelift-io-backend":
+"@spacelift-io/backstage-integration-backend@workspace:packages/spacelift-io-backend":
   version: 0.0.0-use.local
-  resolution: "@spacelift/backstage-integration-backend@workspace:packages/spacelift-io-backend"
+  resolution: "@spacelift-io/backstage-integration-backend@workspace:packages/spacelift-io-backend"
   dependencies:
     "@backstage/backend-defaults": "npm:^0.9.0"
     "@backstage/backend-plugin-api": "npm:^1.3.0"
@@ -6595,9 +6595,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spacelift/backstage-integration-frontend@workspace:packages/spacelift-io-frontend":
+"@spacelift-io/backstage-integration-frontend@workspace:packages/spacelift-io-frontend":
   version: 0.0.0-use.local
-  resolution: "@spacelift/backstage-integration-frontend@workspace:packages/spacelift-io-frontend"
+  resolution: "@spacelift-io/backstage-integration-frontend@workspace:packages/spacelift-io-frontend"
   dependencies:
     "@backstage/cli": "npm:^0.32.0"
     "@backstage/core-app-api": "npm:^1.16.1"
@@ -6628,9 +6628,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@spacelift/backstage-plugins@workspace:.":
+"@spacelift-io/backstage-plugins@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@spacelift/backstage-plugins@workspace:."
+  resolution: "@spacelift-io/backstage-plugins@workspace:."
   dependencies:
     eslint: "npm:^8.0.0"
     typescript: "npm:~5.4.5"
