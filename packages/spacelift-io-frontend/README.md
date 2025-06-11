@@ -8,14 +8,14 @@ This frontend plugin for Backstage provides a user interface to view and interac
 
    ```bash
    # From your Backstage root directory
-   yarn --cwd packages/app add @spacelift/backstage-integration-frontend
+   yarn --cwd packages/app add @spacelift-io/backstage-integration-frontend
    ```
 
 2. Add the plugin to your `packages/app/src/App.tsx`:
 
    ```tsx
    // packages/app/src/App.tsx
-   import { SpaceliftIoPage } from '@spacelift/backstage-integration-frontend';
+   import { SpaceliftIoPage } from '@spacelift-io/backstage-integration-frontend';
 
    // ...
 
@@ -62,6 +62,16 @@ Make sure to replace `<your-subdomain>` with your actual Spacelift subdomain.
 This frontend plugin relies on the permissions configured for the Spacelift API Key in the backend plugin. It does not implement separate user-level permission checks within the frontend components.
 
 Ensure that your Backstage instance has appropriate general permissions set up to control access to this plugin's pages and functionalities. This is crucial to prevent users from performing actions in Spacelift for which they are not authorized via the configured API key.
+
+## Compatibility
+
+This plugin requires:
+
+- `@backstage/core-components` >= 0.17.1
+- `@backstage/core-plugin-api` >= 1.10.6
+- `@backstage/plugin-catalog-react` >= 1.17.0
+
+It is compatible with Backstage 1.17.0 or later.
 
 ## Backend Plugin
 

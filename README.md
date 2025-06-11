@@ -8,9 +8,9 @@ These plugins allow you to view and interact with your Spacelift stacks and runs
 
 This monorepo hosts the following plugins:
 
-- **[Spacelift Backend Plugin](./packages/spacelift-io-backend/README.md)**: Handles communication with the Spacelift API and provides data to the frontend.
+- **[Spacelift Backend Plugin](./packages/spacelift-io-backend/README.md)**: Handles communication with the Spacelift API and provides data to the frontend. Published as `@spacelift-io/backstage-integration-backend`.
   - [View README](./packages/spacelift-io-backend/README.md)
-- **[Spacelift Frontend Plugin](./packages/spacelift-io-frontend/README.md)**: Provides the user interface components to display Spacelift information within Backstage.
+- **[Spacelift Frontend Plugin](./packages/spacelift-io-frontend/README.md)**: Provides the user interface components to display Spacelift information within Backstage. Published as `@spacelift-io/backstage-integration-frontend`.
   - [View README](./packages/spacelift-io-frontend/README.md)
 
 ## Overview
@@ -59,6 +59,17 @@ It is the responsibility of the Backstage instance administrator to ensure that 
 
 Contributions are welcome! Please open an issue to discuss potential changes.
 
+## Compatibility
+
+These plugins are compatible with:
+
+| Plugin   | Backstage Compatibility                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------- |
+| Frontend | Requires Backstage `@backstage/core-components` >= 0.17.1, `@backstage/core-plugin-api` >= 1.10.6 |
+| Backend  | Requires Backstage `@backstage/backend-plugin-api` >= 1.3.0                                       |
+
+We recommend using these plugins with Backstage version 1.17.0 or later to ensure full compatibility.
+
 ## License
 
-This project is licensed under the Apache 2.0 License - see the [LICENSE](./LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

@@ -8,7 +8,7 @@ This backend plugin for Backstage integrates with Spacelift to provide informati
 
    ```bash
    # From your Backstage root directory
-   yarn --cwd packages/backend add @spacelift/backstage-integration-backend
+   yarn --cwd packages/backend add @spacelift-io/backstage-integration-backend
    ```
 
 2. Add the plugin to your backend in `packages/backend/src/index.ts`:
@@ -19,7 +19,7 @@ This backend plugin for Backstage integrates with Spacelift to provide informati
 
    const backend = createBackend();
    // ...
-   backend.add(import('@spacelift/backstage-integration-backend'));
+   backend.add(import('@spacelift-io/backstage-integration-backend'));
    // ...
    await backend.start();
    ```
@@ -37,6 +37,16 @@ spacelift:
 
 Make sure to replace `<your-subdomain>` with your actual Spacelift subdomain.
 The `apiKey` and `apiSecret` should be stored securely, for example, as environment variables.
+
+## Compatibility
+
+This plugin requires:
+
+- `@backstage/backend-plugin-api` >= 1.3.0
+- `@backstage/backend-defaults` >= 0.9.0
+- `@backstage/catalog-client` >= 1.9.1
+
+It is compatible with Backstage 1.17.0 or later.
 
 ## Frontend Plugin
 
