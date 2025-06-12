@@ -27,6 +27,8 @@ The **Spacelift Frontend Plugin** provides:
 - Information about recent runs for each stack.
 - Links to directly access your resources in Spacelift.
 
+![frontend plugin sample](./docs/backstage-integration-plugin.png)
+
 ## Getting Started
 
 To use these plugins, you will need to install and configure both the backend and frontend packages in your Backstage application. Detailed instructions can be found in the respective README files linked above.
@@ -54,6 +56,58 @@ Refer to the individual plugin READMEs for more specific installation and config
 These plugins operate using the permissions granted to the Spacelift API Key configured in the backend. They do not currently implement any additional user-level permission handling within Backstage.
 
 It is the responsibility of the Backstage instance administrator to ensure that appropriate Backstage permissions are configured to control access to the Spacelift plugin pages and features, thereby preventing unauthorized actions or information exposure.
+
+## Project Structure
+
+This project is organized as a monorepo with separate packages for the backend and frontend plugins:
+
+```txt
+backstage-plugins/
+├── docs/                         # Documentation resources
+├── packages/
+│   ├── spacelift-io-backend/     # Backend plugin package
+│   │   ├── src/
+│   │   │   └── services/         # Backend services
+│   │   │       └── Spacelift/    # Spacelift API client services
+│   │   └── package.json          # Backend package manifest
+│   │
+│   └── spacelift-io-frontend/    # Frontend plugin package
+│       ├── src/
+│       │   ├── api/              # API clients
+│       │   ├── components/       # React components
+│       │   └── hooks/            # React hooks
+│       └── package.json          # Frontend package manifest
+└── package.json                  # Root package manifest
+```
+
+### Architecture
+
+The plugins use a simple architecture where the frontend communicates with the backend via REST APIs, and the backend communicates with Spacelift via GraphQL:
+
+![Plugins Architecture](./docs/plugins-architecture.png)
+
+_Note: The architecture diagram source is available as a DrawIO file in the [docs directory](./docs/plugins-architecture.drawio)._
+
+#### Key Components
+
+1. **Frontend Plugin**:
+
+   - UI Components for displaying Spacelift stacks
+   - API client for communicating with the backend plugin
+   - React hooks for data fetching with automatic polling
+
+2. **Backend Plugin**:
+
+   - Express Router handling REST API endpoints
+   - JWT token handling and caching mechanism
+   - GraphQL client for Spacelift API communication
+   - Data validation and error handling
+
+3. **Data Flow**:
+   - Frontend requests data from Backend
+   - Backend authenticates with Spacelift if JWT token is expired
+   - Backend fetches data from Spacelift and returns to Frontend
+   - Frontend polls for updates every 10 seconds
 
 ## Contribution
 

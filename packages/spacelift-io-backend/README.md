@@ -50,8 +50,8 @@ It is compatible with Backstage 1.17.0 or later.
 
 ## Frontend Plugin
 
-This backend plugin is intended to be used with the [Spacelift Frontend Plugin](../spacelift-io-frontend/README.md).
+This backend plugin is intended to be used with the [Spacelift Frontend Plugin](https://github.com/spacelift-io/backstage-plugins/blob/main/packages/spacelift-io-frontend/README.md).
 
 ## Spacelift Documentation
 
-For more information about Spacelift and its API, please refer to the [official Spacelift documentation](https://docs.spacelift.io/).
+For more information about Spacelift and its API, please refer to the [official Spacelift documentation](https://docs.spacelift.io/integrations/external-integrations/backstage).

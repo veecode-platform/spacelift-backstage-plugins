@@ -75,8 +75,8 @@ It is compatible with Backstage 1.17.0 or later.
 
 ## Backend Plugin
 
-This frontend plugin requires the [Spacelift Backend Plugin](../spacelift-io-backend/README.md) to be installed and configured.
+This frontend plugin requires the [Spacelift Backend Plugin](https://github.com/spacelift-io/backstage-plugins/blob/main/packages/spacelift-io-backend/README.md) to be installed and configured.
 
 ## Spacelift Documentation
 
-For more information about Spacelift, please refer to the [official Spacelift documentation](https://docs.spacelift.io/).
+For more information about Spacelift, please refer to the [official Spacelift documentation](https://docs.spacelift.io/integrations/external-integrations/backstage).
