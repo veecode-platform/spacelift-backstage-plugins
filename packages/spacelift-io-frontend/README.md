@@ -52,7 +52,7 @@ This plugin requires the `spacelift.hostUrl` to be configured in your `app-confi
 
 ```yaml
 spacelift:
-  hostUrl: 'https://<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL
+  hostUrl: '<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL (WITHOUT https://)
 ```
 
 Make sure to replace `<your-subdomain>` with your actual Spacelift subdomain.

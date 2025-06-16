@@ -30,7 +30,7 @@ To use this plugin, you need to configure it in your `app-config.yaml`. Add the 
 
 ```yaml
 spacelift:
-  hostUrl: 'https://<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL
+  hostUrl: '<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL (WITHOUT https://)
   apiKey: ${SPACELIFT_API_KEY} # Your Spacelift API Key ID
   apiSecret: ${SPACELIFT_API_SECRET} # Your Spacelift API Key Secret
 ```

@@ -44,7 +44,7 @@ You will need to add the following configuration to your `app-config.yaml`:
 
 ```yaml
 spacelift:
-  hostUrl: 'https://<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL
+  hostUrl: '<your-subdomain>.app.spacelift.io' # Your Spacelift instance URL (WITHOUT https://)
   apiKey: ${SPACELIFT_API_KEY} # Your Spacelift API Key ID (for backend)
   apiSecret: ${SPACELIFT_API_SECRET} # Your Spacelift API Key Secret (for backend)
 ```
