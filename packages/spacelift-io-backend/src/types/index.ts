@@ -27,6 +27,8 @@ export const StackSchema = z.object({
     id: z.string(),
     name: z.string(),
   }),
+  repository: z.string().optional(),
+  projectRoot: z.string().optional(),
 });
 export const StacksSchema = z.array(StackSchema);
 export type Stack = z.infer<typeof StackSchema>;

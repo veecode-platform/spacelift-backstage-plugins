@@ -6,6 +6,9 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach -A -p run build",
+    "start": "yarn workspaces foreach -A -p run start",
+    "yalc:publish:all": "yarn workspaces foreach -A -p run yalc:publish",
+    "yalc:watch:all": "yarn workspaces foreach -A -p run yalc:watch",
     "test": "yarn workspaces foreach -A -p run test --all --watchAll=false",
     "test:ci": "yarn workspaces foreach -A -p run test --all --watchAll=false --ci --coverage"
   },

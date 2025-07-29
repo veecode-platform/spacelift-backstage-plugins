@@ -17,7 +17,8 @@
   "references": [
     // References to sub-projects
     { "path": "packages/spacelift-io-backend" },
-    { "path": "packages/spacelift-io-frontend" }
+    { "path": "packages/spacelift-io-frontend" },
+    { "path": "packages/spacelift-io-scaffolder-actions" }
   ],
   "exclude": ["node_modules", "dist-types"]
 }

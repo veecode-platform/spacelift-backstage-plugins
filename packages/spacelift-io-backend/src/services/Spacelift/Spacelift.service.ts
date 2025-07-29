@@ -1,5 +1,5 @@
 import { gql, request } from 'graphql-request';
-import { validateStacks, validateTriggerRunResult } from '../../helpers/validations';
+import { validateStacks, validateTriggerRunResult, validateStackCreationResult } from '../../helpers/validations';
 import { SpaceliftService, SpaceliftServiceCtx } from './types';
 
 export async function createSpaceliftService({
@@ -75,7 +75,9 @@ export async function createSpaceliftService({
             spaceDetails {
               id
               name
-            }
+            },
+            repository,
+            projectRoot
           }
         }
       `;
@@ -116,6 +118,68 @@ export async function createSpaceliftService({
       const validationResult = validateTriggerRunResult(rawResponse.runTrigger);
 
       logger.info(`Run triggered and validated successfully for stack ${stackId} 🎉`);
+      return validationResult;
+    },
+    createStack: async (stack) => {
+      const currentToken = await getToken();
+
+      const createStackMutation = gql`
+        mutation CreateStack(
+          $name: String!
+          $branch: String!
+          $space: ID!
+          $repository: ID!
+          $projectRoot: String!
+          $labels: [String!]!
+          $description: String
+        ) {
+          stackCreate(
+            input: {
+              name: $name
+              branch: $branch
+              space: $space
+              repository: $repository
+              projectRoot: $projectRoot
+              administrative: true
+              autodeploy: true
+              labels: $labels
+              description: $description
+            }
+            manageState: true
+          ) {
+            id
+            name
+            description
+            labels
+            state
+            branch
+            spaceDetails {
+              id
+              name
+            }
+          }
+        }
+      `;
+
+      logger.info(`Creating stack ${stack.name}`);
+      const rawResponse = await request<{ stackCreate: unknown }>(
+        apiUrl,
+        createStackMutation,
+        {
+          name: stack.name,
+          branch: stack.branch,
+          space: stack.spaceDetails.id,
+          repository: stack.repository || '',
+          projectRoot: stack.projectRoot || '',
+          labels: stack.labels,
+          description: stack.description,
+        },
+        { Authorization: `Bearer ${currentToken}` }
+      );
+
+      const validationResult = validateStackCreationResult(rawResponse.stackCreate);
+
+      logger.info(`Stack created and validated successfully: ${stack.name} 🎉`);
       return validationResult;
     },
   };

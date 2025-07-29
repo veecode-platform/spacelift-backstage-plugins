@@ -13,4 +13,5 @@ export type SpaceliftServiceCtx = {
 export type SpaceliftService = {
   getStacks: () => Promise<Stack[]>;
   triggerRun: (stackId: string) => Promise<TriggerRunResponse>;
+  createStack: (stack: Stack) => Promise<Stack>;
 };
