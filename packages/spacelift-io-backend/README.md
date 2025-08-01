@@ -8,7 +8,7 @@ This backend plugin for Backstage integrates with Spacelift to provide informati
 
    ```bash
    # From your Backstage root directory
-   yarn --cwd packages/backend add @spacelift-io/backstage-integration-backend
+   yarn --cwd packages/backend add @veecode/spacelift-io-backstage-integration-backend
    ```
 
 2. Add the plugin to your backend in `packages/backend/src/index.ts`:
@@ -19,7 +19,7 @@ This backend plugin for Backstage integrates with Spacelift to provide informati
 
    const backend = createBackend();
    // ...
-   backend.add(import('@spacelift-io/backstage-integration-backend'));
+   backend.add(import('@veecode/spacelift-io-backstage-integration-backend'));
    // ...
    await backend.start();
    ```

@@ -2,6 +2,17 @@ import { createTemplateAction } from '@backstage/plugin-scaffolder-node';
 import { z } from 'zod';
 import { examples } from './dummy.examples';
 
+const inputSchema = z.object({
+  message: z
+    .string()
+    .describe('A message to log')
+    .default('Hello from Spacelift.io scaffolder action!'),
+  name: z
+    .string()
+    .describe('Name to include in the greeting')
+    .optional(),
+});
+
 /**
  * Creates a dummy scaffolder action for demonstration purposes
  *
@@ -16,20 +27,11 @@ export const createDummyAction = () => {
     description: 'A simple dummy action for Spacelift.io integration',
     examples,
     schema: {
-      input: z.object({
-        message: z
-          .string()
-          .describe('A message to log')
-          .default('Hello from Spacelift.io scaffolder action!'),
-        name: z
-          .string()
-          .describe('Name to include in the greeting')
-          .optional(),
-      }),
+      input: inputSchema,
     },
     supportsDryRun: true,
     async handler(ctx) {
-      const { message, name } = ctx.input;
+      const { message, name } = inputSchema.parse(ctx.input);
       
       // Handle dry run first
       if (ctx.isDryRun) {
@@ -44,7 +46,7 @@ export const createDummyAction = () => {
       }
       
       // Actual execution
-      ctx.logger.info(`Spacelift.io dummy action executed`);
+      //ctx.logger.info(`Spacelift.io dummy action executed`);
       
       if (name) {
         ctx.logger.info(`${message} Hello, ${name}!`);
@@ -52,7 +54,7 @@ export const createDummyAction = () => {
         ctx.logger.info(message);
       }
       
-      ctx.logger.info('Dummy action completed successfully');
+      //ctx.logger.info('Dummy action completed successfully');
     },
   });
 };

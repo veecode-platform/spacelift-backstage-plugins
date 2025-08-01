@@ -36,7 +36,10 @@ jobs:
         run: yarn run build
 
       - name: Set NPM auth token
-        run: npm config set "//registry.npmjs.org/:_authToken" ${{ secrets.NPM_PULUMI_PUBLISHER }}
+        run: npm config set "//${NPM_REGISTRY:-registry.npmjs.org}/:_authToken" "$NPM_TOKEN"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_REGISTRY: ${{ env.NPM_REGISTRY }}
 
       - name: Publish backend plugin
-        run: yarn workspaces foreach -A --exclude @spacelift-io/backstage-plugins exec npm publish --access public
+        run: yarn workspaces foreach -A --exclude @veecode/spacelift-io-backstage-plugins exec npm publish --access public

@@ -1,5 +1,5 @@
 {
-  "name": "@spacelift-io/backstage-plugins",
+  "name": "@veecode/spacelift-io-backstage-plugins",
   "private": true,
   "workspaces": [
     "packages/*"

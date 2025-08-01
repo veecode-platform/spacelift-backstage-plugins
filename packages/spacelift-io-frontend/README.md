@@ -8,14 +8,14 @@ This frontend plugin for Backstage provides a user interface to view and interac
 
    ```bash
    # From your Backstage root directory
-   yarn --cwd packages/app add @spacelift-io/backstage-integration-frontend
+   yarn --cwd packages/app add @veecode/spacelift-io-backstage-integration-frontend
    ```
 
 2. Add the plugin to your `packages/app/src/App.tsx`:
 
    ```tsx
    // packages/app/src/App.tsx
-   import { SpaceliftIoPage } from '@spacelift-io/backstage-integration-frontend';
+   import { SpaceliftIoPage } from '@veecode/spacelift-io-backstage-integration-frontend';
 
    // ...
 

@@ -1,5 +1,5 @@
 {
-  "name": "@spacelift-io/backstage-integration-frontend",
+  "name": "@veecode/spacelift-io-backstage-integration-frontend",
   "version": "<VERSION>",
   "description": "Backstage plugin for integrating Spacelift.io with Backstage",
   "keywords": [
@@ -27,7 +27,7 @@
     "role": "frontend-plugin",
     "pluginId": "spacelift-io-frontend",
     "pluginPackages": [
-      "@spacelift-io/backstage-integration-frontend"
+      "@veecode/spacelift-io-backstage-integration-frontend"
     ]
   },
   "configSchema": "config.d.ts",

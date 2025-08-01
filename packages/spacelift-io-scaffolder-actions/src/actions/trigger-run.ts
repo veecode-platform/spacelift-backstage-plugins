@@ -5,7 +5,7 @@ import {
   createSpaceliftService, 
   type SpaceliftServiceCtx,
   type TriggerRunResponse 
-} from '@spacelift-io/backstage-integration-backend';
+} from '@veecode/spacelift-io-backstage-integration-backend';
 
 /**
  * Creates a scaffolder action to trigger Spacelift stack runs

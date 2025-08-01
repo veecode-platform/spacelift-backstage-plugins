@@ -4,14 +4,21 @@ This repository contains Backstage plugins designed to integrate with [Spacelift
 
 These plugins allow you to view and interact with your Spacelift stacks and runs directly within your Backstage instance.
 
+Important: this is a forked repo from [spacelift-io/backstage-plugins](https://github.com/spacelift-io/backstage-plugins). This repo is published to npm as:
+  - `@veecode/spacelift-io-backstage-integration-backend`
+  - `@veecode/spacelift-io-backstage-integration-frontend`
+  - `@veecode/spacelift-io-backstage-scaffolder-actions`
+
 ## Available Plugins
 
 This monorepo hosts the following plugins:
 
-- **[Spacelift Backend Plugin](./packages/spacelift-io-backend/README.md)**: Handles communication with the Spacelift API and provides data to the frontend. Published as `@spacelift-io/backstage-integration-backend`.
+- **[Spacelift Backend Plugin](./packages/spacelift-io-backend/README.md)**: Handles communication with the Spacelift API and provides data to the frontend. Published as `@veecode/spacelift-io-backstage-integration-backend`.
   - [View README](./packages/spacelift-io-backend/README.md)
-- **[Spacelift Frontend Plugin](./packages/spacelift-io-frontend/README.md)**: Provides the user interface components to display Spacelift information within Backstage. Published as `@spacelift-io/backstage-integration-frontend`.
+- **[Spacelift Frontend Plugin](./packages/spacelift-io-frontend/README.md)**: Provides the user interface components to display Spacelift information within Backstage. Published as `@veecode/spacelift-io-backstage-integration-frontend`.
   - [View README](./packages/spacelift-io-frontend/README.md)
+- **[Spacelift Actions Module](./packages/spacelift-io-scaffolder-actions/README.md)**: Provides the user custom actions for the Spacelift integration during scaffolding.
+  - [View README](./packages/spacelift-io-scaffolder-actions/README.md)
 
 ## Overview
 
@@ -28,6 +35,10 @@ The **Spacelift Frontend Plugin** provides:
 - Links to directly access your resources in Spacelift.
 
 ![frontend plugin sample](./docs/backstage-integration-plugin.png)
+
+The **Spacelift Scaffolder Actions Plugin** provides:
+
+- Custom actions to Create Stacks and Trigger Runs in Spacelift.
 
 ## Getting Started
 
@@ -63,21 +74,26 @@ This project is organized as a monorepo with separate packages for the backend a
 
 ```txt
 backstage-plugins/
-├── docs/                         # Documentation resources
+├── docs/                              # Documentation resources
 ├── packages/
-│   ├── spacelift-io-backend/     # Backend plugin package
+│   ├── spacelift-io-backend/          # Backend plugin package
 │   │   ├── src/
-│   │   │   └── services/         # Backend services
-│   │   │       └── Spacelift/    # Spacelift API client services
-│   │   └── package.json          # Backend package manifest
+│   │   │   └── services/              # Backend services
+│   │   │       └── Spacelift/         # Spacelift API client services
+│   │   └── package.json               # Backend package manifest
 │   │
-│   └── spacelift-io-frontend/    # Frontend plugin package
+│   ├── spacelift-io-frontend/         # Frontend plugin package
+│   │   ├── src/
+│   │   │   ├── api/                   # API clients
+│   │   │   ├── components/            # React components
+│   │   │   └── hooks/                 # React hooks
+│   │   └── package.json               # Frontend package manifest
+│   │
+│   └── spacelift-io-scaffolder-actions/ # Scaffolder actions module
 │       ├── src/
-│       │   ├── api/              # API clients
-│       │   ├── components/       # React components
-│       │   └── hooks/            # React hooks
-│       └── package.json          # Frontend package manifest
-└── package.json                  # Root package manifest
+│       │   └── actions/               # Custom scaffolder actions for Spacelift
+│       └── package.json               # Actions module package manifest
+└── package.json                       # Root package manifest
 ```
 
 ### Architecture
@@ -109,6 +125,10 @@ _Note: The architecture diagram source is available as a DrawIO file in the [doc
    - Backend fetches data from Spacelift and returns to Frontend
    - Frontend polls for updates every 10 seconds
 
+## Github Actions
+
+
+
 ## Contribution
 
 Contributions are welcome! Please open an issue to discuss potential changes.
@@ -127,3 +147,4 @@ We recommend using these plugins with Backstage version 1.17.0 or later to ensur
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
+

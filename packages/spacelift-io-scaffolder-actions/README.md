@@ -1,11 +1,11 @@
-# @spacelift-io/backstage-scaffolder-actions
+# @veecode/spacelift-io-backstage-scaffolder-actions
 
 This package provides Backstage scaffolder actions for Spacelift.io integration.
 
 ## Installation
 
 ```bash
-yarn add @spacelift-io/backstage-scaffolder-actions
+yarn add @veecode/spacelift-io-backstage-scaffolder-actions
 ```
 
 ## Usage
@@ -13,7 +13,7 @@ yarn add @spacelift-io/backstage-scaffolder-actions
 In your Backstage backend, register the module:
 
 ```typescript
-import { spaceliftScaffolderActionsModule } from '@spacelift-io/backstage-scaffolder-actions';
+import { spaceliftScaffolderActionsModule } from '@veecode/spacelift-io-backstage-scaffolder-actions';
 
 const backend = createBackend();
 backend.add(spaceliftScaffolderActionsModule);
