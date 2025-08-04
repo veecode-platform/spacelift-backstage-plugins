@@ -5,7 +5,7 @@ import {
   createSpaceliftService, 
   type SpaceliftServiceCtx,
   type Stack 
-} from '@veecode/spacelift-io-backstage-integration-backend';
+} from '@veecode/spacelift-io-shared';
 
 /**
  * Creates a scaffolder action to create Spacelift stacks

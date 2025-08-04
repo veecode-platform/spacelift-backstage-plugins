@@ -1,6 +1,6 @@
 {
   "name": "@veecode/spacelift-io-backstage-scaffolder-actions",
-  "version": "<VERSION>",
+  "version": "1.0.4-beta",
   "description": "Backstage scaffolder actions for Spacelift.io integration",
   "keywords": [
     "backstage-plugin",
@@ -40,7 +40,7 @@
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test",
     "test:watch": "backstage-cli package test --watch",
-    "clean": "backstage-cli package clean",
+    "clean": "backstage-cli package clean && rm -Rf dist-dynamic",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack"
   },
@@ -48,9 +48,7 @@
     "@backstage/backend-plugin-api": "^1.3.0",
     "@backstage/errors": "^1.2.7",
     "@backstage/plugin-scaffolder-node": "^0.5.0",
-    "@veecode/spacelift-io-backstage-integration-backend": "workspace:^",
-    "graphql-request": "^7.1.2",
-    "yaml": "^2.0.0",
+    "@veecode/spacelift-io-shared": "workspace:^",
     "zod": "4.0.14"
   },
   "devDependencies": {

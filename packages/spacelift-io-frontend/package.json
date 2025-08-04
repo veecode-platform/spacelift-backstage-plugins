@@ -1,6 +1,6 @@
 {
   "name": "@veecode/spacelift-io-backstage-integration-frontend",
-  "version": "<VERSION>",
+  "version": "1.0.4-beta",
   "description": "Backstage plugin for integrating Spacelift.io with Backstage",
   "keywords": [
     "backstage-plugin",
@@ -41,7 +41,7 @@
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test --coverage",
     "test:watch": "backstage-cli package test --watch",
-    "clean": "backstage-cli package clean",
+    "clean": "backstage-cli package clean && rm -Rf dist-dynamic",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack"
   },

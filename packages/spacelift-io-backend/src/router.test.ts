@@ -1,11 +1,11 @@
 import { HttpAuthService, LoggerService } from '@backstage/backend-plugin-api';
 import { mockServices } from '@backstage/backend-test-utils';
 import express from 'express';
-import { ClientError, GraphQLResponse } from 'graphql-request'; // Keep this import
+import { ClientError, GraphQLResponse } from '@veecode/spacelift-io-shared'; // Keep this import
 import request from 'supertest';
 import { generateMockStacks } from './__test__/mocks/stack';
 import { createRouter } from './router';
-import { SpaceliftService } from './services/Spacelift/types';
+import { SpaceliftService } from '@veecode/spacelift-io-shared';
 
 // Mock SpaceliftService
 const mockSpaceliftService = {

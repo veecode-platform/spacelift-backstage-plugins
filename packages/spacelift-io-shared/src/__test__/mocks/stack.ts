@@ -1,4 +1,4 @@
-import { Stack } from '@veecode/spacelift-io-shared';
+import { Stack } from '../../types';
 
 export const mockStack: Stack = {
   id: 'stack-id',

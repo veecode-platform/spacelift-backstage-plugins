@@ -5,8 +5,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach -A -p run build",
+    "build": "yarn workspace @veecode/spacelift-io-shared run build && yarn workspaces foreach -A --exclude @veecode/spacelift-io-shared -p run build",
     "start": "yarn workspaces foreach -A -p run start",
+    "clean": "yarn workspaces foreach -A -p run clean",
     "yalc:publish:all": "yarn workspaces foreach -A -p run yalc:publish",
     "yalc:watch:all": "yarn workspaces foreach -A -p run yalc:watch",
     "test": "yarn workspaces foreach -A -p run test --all --watchAll=false",

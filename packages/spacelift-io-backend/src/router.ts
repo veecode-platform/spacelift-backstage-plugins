@@ -1,8 +1,8 @@
 import { HttpAuthService, LoggerService } from '@backstage/backend-plugin-api';
 import express from 'express';
 import Router from 'express-promise-router';
-import { ClientError } from 'graphql-request';
-import { SpaceliftService } from './services/Spacelift/types';
+import { ClientError } from '@veecode/spacelift-io-shared';
+import { SpaceliftService } from '@veecode/spacelift-io-shared';
 
 // Helper to map service errors to HTTP responses
 function handleError(res: express.Response, logger: LoggerService, error: any, context: string) {

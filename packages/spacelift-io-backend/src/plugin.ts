@@ -3,7 +3,7 @@ import {
   createBackendPlugin,
 } from '@backstage/backend-plugin-api';
 import { createRouter } from './router';
-import { createSpaceliftService } from './services/Spacelift/Spacelift.service';
+import { createSpaceliftService } from '@veecode/spacelift-io-shared';
 
 /**
  * spaceliftIoPlugin backend plugin

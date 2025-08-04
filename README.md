@@ -11,7 +11,7 @@ Important: this is a forked repo from [spacelift-io/backstage-plugins](https://g
 
 ## Available Plugins
 
-This monorepo hosts the following plugins:
+This monorepo hosts the following plugins and modules:
 
 - **[Spacelift Backend Plugin](./packages/spacelift-io-backend/README.md)**: Handles communication with the Spacelift API and provides data to the frontend. Published as `@veecode/spacelift-io-backstage-integration-backend`.
   - [View README](./packages/spacelift-io-backend/README.md)

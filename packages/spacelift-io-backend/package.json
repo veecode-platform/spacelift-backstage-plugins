@@ -1,6 +1,6 @@
 {
   "name": "@veecode/spacelift-io-backstage-integration-backend",
-  "version": "<VERSION>",
+  "version": "1.0.4-beta",
   "description": "Backstage plugin for integrating Spacelift.io with Backstage",
   "keywords": [
     "backstage-plugin",
@@ -37,7 +37,7 @@
     "lint": "backstage-cli package lint",
     "test": "backstage-cli package test",
     "test:watch": "backstage-cli package test --watch",
-    "clean": "backstage-cli package clean",
+    "clean": "backstage-cli package clean && rm -Rf dist-dynamic",
     "prepack": "backstage-cli package prepack",
     "postpack": "backstage-cli package postpack"
   },
@@ -47,9 +47,9 @@
     "@backstage/catalog-client": "^1.9.1",
     "@backstage/errors": "^1.2.7",
     "@backstage/plugin-catalog-node": "^1.16.3",
+    "@veecode/spacelift-io-shared": "workspace:^",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
-    "graphql-request": "^7.1.2",
     "zod": "4.0.14"
   },
   "devDependencies": {
@@ -59,7 +59,6 @@
     "@types/supertest": "^2.0.12",
     "chokidar-cli": "^3.0.0",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "graphql": "^16.8.1",
     "supertest": "^6.2.4",
     "typescript": "~5.4.5"
   },

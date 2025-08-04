@@ -45,6 +45,7 @@ This plugin requires:
 - `@backstage/backend-plugin-api` >= 1.3.0
 - `@backstage/backend-defaults` >= 0.9.0
 - `@backstage/catalog-client` >= 1.9.1
+- `@veecode/spacelift-io-shared`
 
 It is compatible with Backstage 1.17.0 or later.
 
