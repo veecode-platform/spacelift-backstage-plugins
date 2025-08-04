@@ -15,8 +15,8 @@
     "category/cloud",
     "category/infrastructure"
   ],
-  "homepage": "https://spacelift.io",
-  "repository": "https://github.com/spacelift-io/backstage-plugins.git",
+  "homepage": "https://platform.vee.codes",
+  "repository": "https://github.com/veecode-platform/spacelift-backstage-plugins.git",
   "license": "MIT",
   "main": "./dist/index.cjs.js",
   "types": "./dist/index.d.ts",

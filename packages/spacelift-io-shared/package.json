@@ -1,11 +1,14 @@
 {
   "name": "@veecode/spacelift-io-shared",
   "version": "1.0.4-beta",
+  "description": "Shared library for Spacelift.io services in Backstage",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "homepage": "https://platform.vee.codes",
+  "repository": "https://github.com/veecode-platform/spacelift-backstage-plugins.git",
   "license": "MIT",
   "scripts": {
     "build": "tsc -b",

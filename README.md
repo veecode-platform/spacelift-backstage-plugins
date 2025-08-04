@@ -127,7 +127,25 @@ _Note: The architecture diagram source is available as a DrawIO file in the [doc
 
 ## Github Actions
 
+TODO
 
+## Local development
+
+We encourage local development and testing of the plugins.
+
+- Run a local registry - we use Verdaccio (https://verdaccio.org/)
+- Build and push the plugins into the local registry
+
+```
+yarn npm-publish:all
+```
+
+- Package and push the dynamic plugins into the local registry
+
+```
+yarn dynamic-build:all
+yarn dynamic-publish:all
+```
 
 ## Contribution
 

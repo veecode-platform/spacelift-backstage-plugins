@@ -8,10 +8,13 @@
     "build": "yarn workspace @veecode/spacelift-io-shared run build && yarn workspaces foreach -A --exclude @veecode/spacelift-io-shared -p run build",
     "start": "yarn workspaces foreach -A -p run start",
     "clean": "yarn workspaces foreach -A -p run clean",
-    "yalc:publish:all": "yarn workspaces foreach -A -p run yalc:publish",
+    "yalc:publish:all": "yarn workspace @veecode/spacelift-io-shared run build && yarn workspaces foreach -A -p run yalc:publish",
     "yalc:watch:all": "yarn workspaces foreach -A -p run yalc:watch",
     "test": "yarn workspaces foreach -A -p run test --all --watchAll=false",
-    "test:ci": "yarn workspaces foreach -A -p run test --all --watchAll=false --ci --coverage"
+    "test:ci": "yarn workspaces foreach -A -p run test --all --watchAll=false --ci --coverage",
+    "npm-publish:all": "yarn build && yarn workspaces foreach -A --exclude @veecode/spacelift-io-backstage-plugins exec npm publish --access public",
+    "dynamic-build:all": "yarn workspaces foreach -A --exclude @veecode/spacelift-io-backstage-plugins --exclude @veecode/spacelift-io-shared exec npx @janus-idp/cli@latest package export-dynamic-plugin",
+    "dynamic-publish:all": "yarn workspaces foreach -A --exclude @veecode/spacelift-io-backstage-plugins --exclude @veecode/spacelift-io-shared exec npm publish --access public dist-dynamic/"
   },
   "devDependencies": {
     "eslint": "^8.0.0",
